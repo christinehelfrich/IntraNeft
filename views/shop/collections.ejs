@@ -7,22 +7,57 @@
 
             <main>
 
+              
+              <h1 class="prod_title">Collections</h1>
+              <!-- Slideshow container -->
+
+
           <% if (prods.length > 0) { %>
             <div class="grid">
                 <% 
            
                 for (let product of prods) { 
                   %>
+                  
 
-                  <article class="card product-item">
-                    <header class="card__header">
-                        <h1 class="product__title">
+                  <article class="card product-item coll">
+           <header id="coll-header" class="card__header" >
+                        <h1 class="theColTitle" class="product__title">
                     <%= product.collectionTitle %>
                 </h1>
-                </header>
+                <br>
+   </header>
                 <div class="card__image">
-                  <img src="<%= product.imageUrl %>" 
-                      alt="<%= product.title %>">
+                  <div class="slideshow-container">
+                    <!-- Full-width images with number and caption text -->
+                    <% 
+           
+                    for (let prod of allProducts) { 
+                      if (prod.collectionTitle == product.collectionTitle) {
+  
+                      %>
+                      <p style="display: none;" class='collection' id="collection"> <%= product.collectionTitle %></p>
+                  
+                    <div class="<%= product.collectionTitle %> fade">
+                      <img class="cardImg" src="/<%= prod.imageUrl %>"  style="width:100%">
+                      <div class="text"><%= prod.title %></div>
+                    </div> 
+                    <a class="prev" id="<%= product.collectionTitle %>" onclick="plusSlides(-1, event)">&#10094;</a>
+                    <a class="next" id="<%= product.collectionTitle %>" onclick="plusSlides(1, event)">&#10095;</a>
+                   
+                    <% } %>
+                    <% } %>
+                    
+                    <!-- Next and previous buttons -->
+
+                  </div>
+                  <br>
+                  <!-- The dots/circles -->
+                  <div style="text-align:center">
+                    <span class="dot" id="<%= product.collectionTitle %>"  onclick="currentSlide(1, event)"></span>
+                    <span class="dot" id="<%= product.collectionTitle %>" onclick="currentSlide(2, event)"></span>
+                    <span class="dot" id="<%= product.collectionTitle %>" onclick="currentSlide(3, event)"></span>
+                  </div>
               </div>
               <a href="collections/prods/<%= product.collectionTitle %>" class="btn">Shop Collection</a>
               </article>
@@ -34,4 +69,5 @@
                         <h1>No Products Found!</h1>
                         <% } %>
             </main>
+
             <%- include('../includes/end.ejs') %>

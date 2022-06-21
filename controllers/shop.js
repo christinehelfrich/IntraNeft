@@ -2,13 +2,18 @@ const Product = require('../models/product');
 const Cart = require('../models/cart');
 const User = require('../models/user');
 const Order = require('../models/order');
+const fs = require('fs');
+const path = require('path');
 
 exports.getCollections = (req, res, next) => { 
   Product.find()
   .then(products => {
     let titleArray = []
     let collectionsArray = []
+    let allProductsArray = []
+
     products.forEach(product => {
+      allProductsArray.push(product)
       if (titleArray.includes(product.collectionTitle)){
       }
       else{
@@ -17,6 +22,7 @@ exports.getCollections = (req, res, next) => {
       }    
     });
   res.render('shop/collections', {
+    allProducts: allProductsArray,
     prods: collectionsArray,
     pageTitle: 'Collections', 
     path: '/collections'
@@ -222,3 +228,5 @@ exports.getOrders = (req, res, next) => {
       return next(error);
     });
 };
+
+

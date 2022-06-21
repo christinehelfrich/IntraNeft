@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:wght@300');
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+
+
+
 * {
   box-sizing: border-box;
 }
@@ -98,10 +102,13 @@ form {
 
 .main-header__item a:hover,
 .main-header__item a:active,
-.main-header__item a.active,
+.main-header__item a:active,
 .main-header__item button:hover,
 .main-header__item button:active {
-  color: #ffeb3b;
+  background: white;
+  color: #016587;
+  border-radius: 3px;
+  padding: 10px;
 }
 
 .mobile-nav {
@@ -173,8 +180,8 @@ form {
 
 #side-menu-toggle:active,
 #side-menu-toggle:hover {
-  color: #ffeb3b;
-  border-color: #ffeb3b;
+  color: white;
+  border: 1px solid white;
 }
 
 .backdrop {
